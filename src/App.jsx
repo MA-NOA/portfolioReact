@@ -68,7 +68,7 @@ function App() {
           <h1 className="hero-name">
             Manoa
             <br />
-            <em>Ramanantsoa</em>
+            <em>Nampoina</em>
           </h1>
           <p className="hero-desc">
             I study the structure of things — from{" "}
