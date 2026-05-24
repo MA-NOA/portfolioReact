@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/next"
 import { useEffect } from "react";
 
 import "@fontsource-variable/bricolage-grotesque";
