@@ -8,7 +8,7 @@ import "@fontsource/libre-baskerville/400-italic.css";
 import "@fontsource/dm-mono";
 
 import "./App.css";
-import { FaArrowRight, FaTiktok, FaGithub } from "react-icons/fa";
+import { FaArrowRight, FaTiktok, FaGithub, FaFacebook } from "react-icons/fa";
 import { PiHandWaving } from "react-icons/pi";
 
 function App() {
@@ -424,6 +424,16 @@ function App() {
                   >
                     <FaTiktok />
                     TikTok — @manoa_ramanantsoa
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/ObitoShadow12"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <FaFacebook />
+                    Facebook - Irimanoa HJ
                   </a>
                 </li>
               </ul>
