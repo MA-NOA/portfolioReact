@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useState } from "react";
 
 import "@fontsource-variable/bricolage-grotesque";
 import "@fontsource-variable/manrope";
@@ -10,6 +11,15 @@ import "@fontsource/dm-mono";
 import "./App.css";
 import { FaArrowRight, FaTiktok, FaGithub, FaFacebook } from "react-icons/fa";
 import { PiHandWaving } from "react-icons/pi";
+
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url,
+).toString();
 
 function App() {
   function copyEmail() {
@@ -107,6 +117,10 @@ function App() {
     },
   ];
 
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [showResume, setShowResume] = useState(false);
+
   return (
     <>
       <nav>
@@ -123,6 +137,9 @@ function App() {
             </li>
             <li>
               <a href="#contact">Contact</a>
+            </li>
+            <li>
+              <button onClick={() => setShowResume(true)}>Resume</button>
             </li>
           </ul>
         </div>
@@ -441,6 +458,64 @@ function App() {
           </div>
         </section>
       </div>
+
+      <section id="resume" style={{ display: showResume ? "block" : "none" }}>
+        <div className="viewer-shell">
+          <header className="viewer-header">
+            <a
+              className="download-btn"
+              href="/document.pdf"
+              download="document.pdf"
+            >
+              Download CV
+            </a>
+            <button onClick={() => setShowResume(false)}>✕ Close</button>
+            <span className="viewer-page-count">
+              {numPages ? `${numPages} pages` : "—"}
+            </span>
+          </header>
+
+          <main className="viewer-stage">
+            <div className="document-shadow">
+              <Document
+                file="/document.pdf"
+                onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+                loading={<div className="loading-state">Loading…</div>}
+              >
+                <Page pageNumber={pageNumber} className="pdf-page" />
+              </Document>
+            </div>
+          </main>
+
+          <nav className="viewer-controls">
+            <button
+              className="ctrl-btn"
+              onClick={() => setPageNumber((p) => Math.max(p - 1, 1))}
+              disabled={pageNumber <= 1}
+            >
+              ← Prev
+            </button>
+
+            <div className="page-indicator">
+              <span className="page-current">
+                {String(pageNumber).padStart(2, "0")}
+              </span>
+              <span className="page-sep">/</span>
+              <span className="page-total">
+                {numPages ? String(numPages).padStart(2, "0") : "—"}
+              </span>
+            </div>
+
+            <button
+              className="ctrl-btn"
+              onClick={() => setPageNumber((p) => Math.min(p + 1, numPages))}
+              disabled={pageNumber >= numPages}
+            >
+              Next →
+            </button>
+          </nav>
+        </div>
+      </section>
 
       <footer>
         <div className="wrapper">

@@ -1,0 +1,185 @@
+\documentclass[9.5pt, a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=1cm, bottom=0.9cm, left=1.6cm, right=1.6cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{mdframed}
+\usepackage{mathtools}
+
+\definecolor{ink}{HTML}{111111}
+\definecolor{mid}{HTML}{444444}
+\definecolor{soft}{HTML}{777777}
+\definecolor{rule}{HTML}{BBBBBB}
+\definecolor{boxbg}{HTML}{F7F7F7}
+
+\hypersetup{
+	colorlinks=true,
+	urlcolor=ink,
+	linkcolor=ink,
+	pdftitle={Curriculum Vitae -- IRIMANOA Nampoina Hiarijaona},
+}
+
+\pagestyle{empty}
+
+% Section style: § N. TITLE
+\newcounter{cvsec}
+\setcounter{cvsec}{0}
+\newcommand{\cvsection}[1]{%
+	\stepcounter{cvsec}%
+	\vspace{1pt}%
+	\noindent{\large\textbf{\S\,\thecvsec.\enspace\textsc{#1}}}%
+	\vspace{1pt}%
+	\newline\noindent{\color{rule}\rule{\linewidth}{0.5pt}}%
+	\vspace{1pt}%
+}
+
+% Entry: bold left, serif right
+\newcommand{\cventry}[4]{%
+	\noindent
+	\begin{tabularx}{\linewidth}{@{}X r@{}}
+		\textbf{#1} & \textit{\small #2} \\
+		\textit{\small\color{mid}#3} & {\small\color{soft} #4}
+	\end{tabularx}%
+}
+
+\newcommand{\cventryshort}[3]{%
+	\noindent
+	\begin{tabularx}{\linewidth}{@{}X r@{}}
+		\textbf{#1},\enspace\textit{\small\color{mid}#2} & {\small\color{soft}#3}
+	\end{tabularx}%
+}
+
+% Theorem-style proof environment repurposed as "note"
+\newtheoremstyle{cvnote}{}{}{\small\color{mid}}{}{}{.}{ }{}
+\theoremstyle{cvnote}
+\newtheorem*{cvabstract}{Profile}
+
+\setlist[itemize]{
+	leftmargin=1.4em, itemsep=0pt, topsep=2pt, parsep=0pt,
+	label={\small$\triangleright$}
+}
+
+\begin{document}
+	
+	% ── Title block ──────────────────────────────────────────────────────────────
+	\begin{center}
+		{\LARGE\textbf{IRIMANOA Nampoina Hiarijaona}}\\[2pt]
+		{\small\textsc{Curriculum Vit\ae}}\\[3pt]
+		\noindent{\color{rule}\rule{0.6\linewidth}{0.4pt}}\\[3pt]
+		{\small
+			\texttt{manoa576@proton.me}\enspace$\mid$\enspace
+			\texttt{+261 38 96 332 09}\enspace$\mid$\enspace
+			Antananarivo, Madagascar\\[3pt]
+			\href{https://github.com/ma-noa}{\texttt{github.com/ma-noa}}\enspace$\mid$\enspace
+			\href{https://tiktok.com/@manoa_ramanantsoa}{\texttt{@manoa\_ramanantsoa} (TikTok)}
+		}
+	\end{center}
+	
+	\vspace{1pt}
+	
+	% ── Profile ──────────────────────────────────────────────────────────────────
+	\begin{mdframed}[
+		backgroundcolor=boxbg,
+		linecolor=rule,
+		linewidth=0.5pt,
+		innertopmargin=5pt,
+		innerbottommargin=5pt,
+		innerleftmargin=10pt,
+		innerrightmargin=10pt,
+		skipabove=2pt,
+		skipbelow=2pt
+		]
+		\textit{Mathematician and builder drawn to the deep structures underlying computation, numbers,
+			and logic. Work spans real analysis, abstract algebra, and the intersections where pure
+			mathematics meets code. The most interesting problems live at boundaries.
+			Let $\varepsilon > 0$ be given.}
+	\end{mdframed}
+	
+	% ── §1 Education ─────────────────────────────────────────────────────────────
+	\cvsection{Education}
+	
+	\cventry{\'Ecole Normale Sup\'erieure (ENS)}{2023\,--\,present}%
+	{L2\,---\,Pure Mathematics}{Antananarivo, Madagascar}
+	\begin{itemize}
+		\item Real analysis, abstract algebra, linear algebra, number theory
+		\item Formal mathematical training pursued alongside independent software engineering
+	\end{itemize}
+	
+	\vspace{2pt}
+	\cventryshort{Baccalaur\'eat Scientifique}{mention \textit{Bien} $-$ Saint Joseph School, Ambohimandroso}{2023}
+	
+	\vspace{2pt}
+	\cventryshort{Baccalaur\'eat A2}{mention \textit{Assez Bien} $-$ Future Generation School, Amparafaravola}{2022}
+	
+	% ── §2 Projects ──────────────────────────────────────────────────────────────
+	\cvsection{Selected Works}
+	
+	\cventry{CEYS Encryptor}{2025}%
+	{\href{https://github.com/MA-NOA/Ceys-Encryptor}{\texttt{github.com/MA-NOA/Ceys-Encryptor}}\enspace$\cdot$\enspace Open Source}%
+	{C\texttt{++} $\cdot$ Number Theory $\cdot$ Linear Algebra}
+	\begin{itemize}
+		\item Keyless symmetric encryption architecture; explores cipher design and byte-level manipulation in C\texttt{++}
+		\item Bridges ENS coursework in number theory with applied systems programming
+	\end{itemize}
+	
+	\vspace{2pt}
+	\cventry{Major Cry}{2025}{Design support for vertical rescue operations}{\LaTeX\ $\cdot$ Social Support}
+	\begin{itemize}
+		\item Technical coordination documentation typeset in \LaTeX{}; source pending release
+	\end{itemize}
+	
+	\vspace{2pt}
+	\cventry{Portfolio}{2026}%
+	{\href{https://github.com/MA-NOA/portfolioReact}{\texttt{github.com/MA-NOA/portfolioReact}}}%
+	{React $\cdot$ Vite $\cdot$ Design}
+	\begin{itemize}
+		\item Personal site where mathematics, code, and aesthetics intersect
+	\end{itemize}
+	
+	% ── §3 Skills ────────────────────────────────────────────────────────────────
+	\cvsection{Technical Competencies}
+	
+	\begin{tabularx}{\linewidth}{@{}>{\small\textbf}l@{\hspace{10pt}}>{\small\color{mid}}X@{}}
+		Languages      & TypeScript, Go, Python, C\texttt{++}, SQL, Rust \textit{(learning)} \\[1pt]
+		Frontend       & React, Next.js, Vite, Tailwind CSS, D3.js, Figma \\[1pt]
+		Backend        & Node.js, PostgreSQL, Redis, gRPC, REST \\[1pt]
+		Infra           & AWS, Docker, Terraform, GitHub Actions, Datadog \\[1pt]
+		Mathematics    & Real Analysis \textit{(adv.)}, Abstract Algebra \textit{(adv.)}, Number Theory, Topology \\[1pt]
+		Other          & \LaTeX\ \textit{(proficient)},\enspace Cybersecurity\,---\,Cisco Certified Ethical Hacker \\
+	\end{tabularx}
+	
+	% ── §4 Languages ─────────────────────────────────────────────────────────────
+	\cvsection{Languages}
+	
+	\noindent\small
+	\textbf{Malagasy}\enspace Native\quad$\cdot$\quad
+	\textbf{French}\enspace Fluent (academic)\quad$\cdot$\quad
+	\textbf{English}\enspace Professional
+	
+	% ── §5 Interests ─────────────────────────────────────────────────────────────
+	\cvsection{Research Interests \& Goals}
+	
+	\noindent\small\color{mid}
+	Clean architecture\enspace$\cdot$\enspace
+	Developer tooling\enspace$\cdot$\enspace
+	Type theory\enspace$\cdot$\enspace
+	Formal methods\enspace$\cdot$\enspace
+	Cryptography\enspace$\cdot$\enspace
+	Mathematics outreach
+	
+	% ── Footer ───────────────────────────────────────────────────────────────────
+	\noindent{\color{rule}\rule{\linewidth}{0.4pt}}
+	\begin{center}
+		\small\textit{$\forall\,\varepsilon > 0,\;\exists\,\delta > 0$ such that this resum\'e fits within one page.}
+		\quad\textit{Q.E.D.}
+	\end{center}
+	
+\end{document}

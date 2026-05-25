@@ -667,3 +667,252 @@ footer {
     content: "·";
     margin-right: 5px;
 }
+
+.viewer-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.viewer-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.1rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    letter-spacing: 0.08em;
+}
+
+.viewer-label {
+    font-size: 0.65rem;
+    color: var(--accent);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+}
+
+.viewer-filename {
+    font-size: 0.78rem;
+    color: var(--text);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    flex: 1;
+}
+
+.viewer-page-count {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+}
+
+.viewer-stage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 2rem;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, #1a1710 0%, transparent 60%),
+        var(--bg);
+    overflow-y: auto;
+}
+
+.document-shadow {
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pdf-page canvas {
+    display: block;
+}
+
+.loading-state {
+    width: 480px;
+    height: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    background: var(--surface);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.viewer-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 1.4rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.ctrl-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    font-family: "DM Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ctrl-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.ctrl-btn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.page-indicator {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-family: "Playfair Display", serif;
+}
+
+.page-current {
+    font-size: 1.5rem;
+    color: var(--text);
+    font-weight: 400;
+}
+
+.page-sep {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.page-total {
+    font-size: 1rem;
+    color: var(--text-dim);
+}
+
+.download-btn {
+    font-family: "DM Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.4rem 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+#resume {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--bg);
+    overflow-y: auto;
+}
+
+@media (max-width: 640px) {
+    .viewer-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .viewer-filename {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .viewer-controls {
+        justify-content: center;
+        gap: 0.7rem;
+    }
+
+    .ctrl-btn,
+    .download-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-indicator {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pdf-page canvas {
+        border-radius: 6px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+    .viewer-stage {
+        padding: 0.5rem;
+    }
+
+    .viewer-controls {
+        padding: 0.8rem;
+    }
+
+    .page-current {
+        font-size: 1rem;
+    }
+
+    .page-total,
+    .page-sep {
+        font-size: 0.8rem;
+    }
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0;
+    border: hidden;
+    border-radius: 999px;
+    background: transparent;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
