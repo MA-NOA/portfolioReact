@@ -8,6 +8,8 @@ import "@fontsource/libre-baskerville/400-italic.css";
 import "@fontsource/dm-mono";
 
 import "./App.css";
+import { FaArrowRight, FaTiktok, FaGithub } from "react-icons/fa";
+import { PiHandWaving } from "react-icons/pi";
 
 function App() {
   function copyEmail() {
@@ -39,12 +41,78 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  const projects = [
+    {
+      num: "",
+      title: "CEYS Encryptor",
+      desc: "A beginner keyless encryption architecture design.",
+      tags: ["Linear Algebra", "Number Theory", "C++"],
+      year: "2025",
+      href: "https://github.com/MA-NOA/Ceys-Encryptor",
+    },
+    {
+      num: "",
+      title: "Major Cry",
+      desc: "A design support for vertical rescue operations.",
+      tags: ["Social Support", "LaTex"],
+      year: "2025 // No source code yet",
+      href: "",
+    },
+    {
+      num: "",
+      title: "This Portfolio",
+      desc: "A digital space where mathematics, code and aesthetics intersect.",
+      tags: ["ViteJS", "React", "Design"],
+      year: "2026",
+      href: "https://github.com/MA-NOA/portfolioReact",
+    },
+  ];
+
+  const skills = [
+    {
+      num: "01",
+      title: "Real Analysis",
+      tags: ["Pure math", "Proofs"],
+      level: "advanced",
+    },
+    {
+      num: "02",
+      title: "Abstract Algebra",
+      tags: ["Algebra", "Number theory"],
+      level: "advanced",
+    },
+    {
+      num: "03",
+      title: "Cybersecurity",
+      tags: ["Cisco Certified Ethical Hackers"],
+      level: "proficient",
+    },
+    {
+      num: "04",
+      title: "LaTeX",
+      tags: ["Typesetting", "Academic"],
+      level: "proficient",
+    },
+    {
+      num: "05",
+      title: "React & D3.js",
+      tags: ["Frontend", "Data viz"],
+      level: "learning",
+    },
+    {
+      num: "06",
+      title: "C++ & Go & Python",
+      tags: ["Computation", "Memory Management"],
+      level: "advanced",
+    },
+  ];
+
   return (
     <>
       <nav>
         <div className="nav-inner">
           <a className="logo" href="#">
-            <span>M</span>R.
+            <span>H</span>J.
           </a>
           <ul className="nav-links">
             <li>
@@ -63,17 +131,20 @@ function App() {
       <div className="wrapper">
         <section className="hero" id="hero">
           <div className="hero-eyebrow">
-            <span className="wave">👋</span> Hello, I'm
+            <span className="wave">
+              <PiHandWaving fontSize="24px" />
+            </span>{" "}
+            Hello, I'm
           </div>
           <h1 className="hero-name">
             Manoa
             <br />
-            <em>Nampoina</em>
+            <em>Nampoina HJ</em>
           </h1>
           <p className="hero-desc">
             I study the structure of things — from{" "}
             <strong>real analysis</strong> to
-            <strong>computational number theory</strong>. Mathematics is how I
+            <strong> computational number theory</strong>. Mathematics is how I
             think, write, and see the world.
           </p>
 
@@ -228,8 +299,74 @@ function App() {
           </div>
         </section>
 
+        <section id="selected-work">
+          <div className="section-label">§ 02 — Selected works</div>
+          <div className="project-list">
+            {projects.map((p) => (
+              <a key={p.num} href={p.href} className="project-row">
+                <span className="p-num">{p.num}</span>
+                <div className="p-body">
+                  <span className="p-title">{p.title}</span>
+                  <span className="p-desc">{p.desc}</span>
+                  <div className="p-tags">
+                    {p.tags.map((t) => (
+                      <span key={t} className="p-tag">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-right">
+                  <span className="p-year">{p.year}</span>
+                  <span className="p-arrow">
+                    <FaArrowRight />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section id="skills">
+          <div className="section-label">§ 03 — Tech Interest</div>
+
+          <div className="skill-legend">
+            <span className="leg-item">
+              <span className="sk-dot dot-advanced" />
+              Advanced
+            </span>
+            <span className="leg-item">
+              <span className="sk-dot dot-proficient" />
+              Proficient
+            </span>
+            <span className="leg-item">
+              <span className="sk-dot dot-learning" />
+              Learning
+            </span>
+          </div>
+
+          <div className="skill-grid">
+            {skills.map((s) => (
+              <div key={s.num} className="skill-card">
+                <div className="sk-top">
+                  <span className="sk-num">{s.num}</span>
+                  <span className={`sk-dot dot-${s.level}`} />
+                </div>
+                <span className="sk-title">{s.title}</span>
+                <div className="sk-tags">
+                  {s.tags.map((t) => (
+                    <span key={t} className="sk-tag">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section id="contact">
-          <div className="section-label">§ 02 — Let's build</div>
+          <div className="section-label">§ 04 — Let's build</div>
           <div className="contact-grid">
             <div className="contact-block">
               <h2>Want to build together?</h2>
@@ -275,9 +412,7 @@ function App() {
                     target="_blank"
                     rel="noopener"
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
-                    </svg>
+                    <FaGithub />
                     GitHub — ma-noa
                   </a>
                 </li>
@@ -287,26 +422,8 @@ function App() {
                     target="_blank"
                     rel="noopener"
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z" />
-                    </svg>
+                    <FaTiktok />
                     TikTok — @manoa_ramanantsoa
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M15.5 1h-8A2.5 2.5 0 0 0 5 3.5v17A2.5 2.5 0 0 0 7.5 23h8a2.5 2.5 0 0 0 2.5-2.5v-17A2.5 2.5 0 0 0 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5S10.67 19 11.5 19s1.5.67 1.5 1.5S12.33 22 11.5 22zm4.5-4H7V4h9v14z" />
-                    </svg>
-                    Figma — Design work
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                    </svg>
-                    Bluesky — @manoa
                   </a>
                 </li>
               </ul>
@@ -318,7 +435,9 @@ function App() {
       <footer>
         <div className="wrapper">
           <div className="footer-inner">
-            <span className="footer-copy">© 2026 Manoa Ramanantsoa</span>
+            <span className="footer-copy">
+              © 2026 IRIMANOA Nampoina Hiarijaona
+            </span>
             <span
               className="footer-copy"
               style={{

@@ -227,7 +227,7 @@ nav::after {
 .math-floats svg {
     width: 100%;
     height: 100%;
-    opacity: 0.12;
+    opacity: 0.25;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -487,4 +487,183 @@ footer {
     50% {
         transform: rotate(10deg);
     }
+}
+.project-list {
+    width: 100%;
+}
+
+.project-row {
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    align-items: baseline;
+    padding: 22px 5px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    gap: 0 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: padding-left 0.25s ease;
+}
+
+.project-row:hover {
+    padding-left: 8px;
+}
+
+.p-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+}
+.p-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.p-title {
+    font-family: var(--display);
+    font-size: clamp(17px, 2.5vw, 22px);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+    transition: color 0.2s;
+}
+.project-row:hover .p-title {
+    color: var(--accent);
+}
+.p-desc {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-3);
+}
+.p-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+.p-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: 1px solid var(--rule);
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+.p-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+.p-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+}
+.p-arrow {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateX(-5px);
+    transition:
+        opacity 0.2s,
+        transform 0.2s;
+}
+.project-row:hover .p-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 600px) {
+    .project-row {
+        grid-template-columns: 28px 1fr auto;
+    }
+    .p-desc {
+        display: none;
+    }
+}
+
+.skill-legend {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+}
+.leg-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+}
+.skill-card {
+    background: var(--bg);
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sk-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.sk-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: 0.1em;
+}
+.sk-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+}
+.dot-advanced {
+    background: var(--ink);
+}
+.dot-proficient {
+    background: var(--ink-2);
+}
+.dot-learning {
+    background: var(--rule);
+    border: 1px solid var(--ink-3);
+}
+.sk-title {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+}
+.sk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.sk-tag {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+}
+.sk-tag + .sk-tag::before {
+    content: "·";
+    margin-right: 5px;
 }
